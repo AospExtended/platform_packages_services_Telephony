@@ -428,6 +428,7 @@
         <!-- fdn setting -->
         <activity android:name="com.android.phone.settings.fdn.FdnSetting"
                 android:label="@string/fdn"
+                android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -629,6 +630,7 @@
         </activity>
 
         <activity android:name="com.android.phone.settings.VoicemailSettingsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/voicemail"
             android:theme="@style/DialerSettingsLight">
             <intent-filter >
