@@ -1286,7 +1286,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         case Phone.NT_MODE_LTE_CDMA_AND_EVDO:
             network = Phone.NT_MODE_CDMA;
             break;
-        }
+        // TD-SCDMA Supporting Devices
+        case Phone.NT_MODE_TDSCDMA_ONLY:
+        case Phone.NT_MODE_TDSCDMA_WCDMA:
+        case Phone.NT_MODE_TDSCDMA_GSM:
+        case Phone.NT_MODE_TDSCDMA_GSM_WCDMA:
+        case Phone.NT_MODE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+            network = Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA;
+            break;
+        case Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+            network = Phone.NT_MODE_TDSCDMA_CDMA_EVDO_GSM_WCDMA;
+            break;
+     }
 
         final int phoneSubId = mSubscriptionController.getDefaultDataSubId();
         Phone sPhone = getPhone(phoneSubId);
