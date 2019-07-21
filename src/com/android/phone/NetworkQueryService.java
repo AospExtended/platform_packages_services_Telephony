@@ -197,7 +197,7 @@ public class NetworkQueryService extends Service {
 
                             final boolean isRequestNetworkScanDisable =
                                     getApplicationContext().getResources().getBoolean(
-                                            R.bool.config_requestNetworkScan_disable);
+                                            R.bool.config_disable_TelephonyManager_network_scan);
                             if (isRequestNetworkScanDisable && isIncrementalResult) {
                                 if (DBG) log("network scan via TelephonManager is disabled");
                                 isIncrementalResult = false;
