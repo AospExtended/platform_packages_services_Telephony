@@ -1827,6 +1827,7 @@
     <!-- Message displayed to the user to indicate that a held call has been released /
          disconnected. -->
     <string name="supp_service_held_call_released">Held call has been released.</string>
+<<<<<<< HEAD
     <!-- Configuration setting for world mode Format is <true;SPN if any to be checked>-->
     <string translatable="false" name="config_world_mode_spn">false</string>
     <!-- Configuration setting for mobile network settings show network option by phoneType. Format is <true;SPN if any to be checked>-->
@@ -1836,4 +1837,11 @@
     <string name="ut_not_support">UT is not available</string>
     <string name="ct_ut_not_support_close_4glte">UT is not available, please turn off Enhanced 4G LTE Mode in Settings</string>
     <string name="switch_dds_to_sub_alert_msg">Please switch mobile data to CT SIM</string>
+=======
+    <!-- My Phone Number -->
+    <string name="phone_number_label">My phone number</string>
+    <string name="phone_number_summary">Set the phone number for this device</string>
+    <string name="set_my_number_failed">Failed to set phone number</string>
+    <string name="msisdn_alpha_tag" translatable="false">Voice Line 1</string>
+>>>>>>> ef3c51f28... phone: Add option for setting device phone number (squashed)
 </resources>
