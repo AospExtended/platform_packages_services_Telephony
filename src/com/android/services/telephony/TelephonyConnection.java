@@ -1340,7 +1340,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 b.getBoolean(CarrierConfigManager.KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL);
     }
 
-    private PersistableBundle getCarrierConfig() {
+    public PersistableBundle getCarrierConfig() {
         Phone phone = getPhone();
         if (phone == null) {
             return null;
@@ -2188,7 +2188,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      * 3. If call is a video call, carrier supports video conference calls.
      * 4. If call is a wifi call and VoWIFI is disabled and carrier supports merging these calls.
      */
-    private void refreshConferenceSupported() {
+    void refreshConferenceSupported() {
         boolean isVideoCall = VideoProfile.isVideo(getVideoState());
         Phone phone = getPhone();
         if (phone == null) {
@@ -2205,6 +2205,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (isIms) {
             isVoWifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
         }
+        boolean isRttMergeSupported = getCarrierConfig()
+                .getBoolean(CarrierConfigManager.KEY_ALLOW_MERGING_RTT_CALLS_BOOL);
         PhoneAccountHandle phoneAccountHandle = isIms ? PhoneUtils
                 .makePstnPhoneAccountHandle(phone.getDefaultPhone())
                 : PhoneUtils.makePstnPhoneAccountHandle(phone);
@@ -2229,7 +2231,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         if (mTreatAsEmergencyCall) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; emergency call");
-        } else if (isRtt()) {
+        } else if (isRtt() && !isRttMergeSupported) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; rtt call");
         } else if (!isConferencingSupported || isIms && !isImsConferencingSupported) {
